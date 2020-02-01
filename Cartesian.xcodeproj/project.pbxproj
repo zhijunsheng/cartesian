@@ -14,6 +14,7 @@
 		7530F33023E1132E00CFE732 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7530F32F23E1132E00CFE732 /* Assets.xcassets */; };
 		7530F33323E1132E00CFE732 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7530F33123E1132E00CFE732 /* LaunchScreen.storyboard */; };
 		7530F33E23E1132E00CFE732 /* CartesianTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7530F33D23E1132E00CFE732 /* CartesianTests.swift */; };
+		7530F34923E11B8C00CFE732 /* CartesianView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7530F34823E11B8B00CFE732 /* CartesianView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		7530F33923E1132E00CFE732 /* CartesianTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CartesianTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7530F33D23E1132E00CFE732 /* CartesianTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartesianTests.swift; sourceTree = "<group>"; };
 		7530F33F23E1132E00CFE732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7530F34823E11B8B00CFE732 /* CartesianView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartesianView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				7530F32623E1132900CFE732 /* AppDelegate.swift */,
 				7530F32823E1132900CFE732 /* SceneDelegate.swift */,
 				7530F32A23E1132900CFE732 /* ViewController.swift */,
+				7530F34823E11B8B00CFE732 /* CartesianView.swift */,
 				7530F32C23E1132900CFE732 /* Main.storyboard */,
 				7530F32F23E1132E00CFE732 /* Assets.xcassets */,
 				7530F33123E1132E00CFE732 /* LaunchScreen.storyboard */,
@@ -203,6 +206,7 @@
 				7530F32B23E1132900CFE732 /* ViewController.swift in Sources */,
 				7530F32723E1132900CFE732 /* AppDelegate.swift in Sources */,
 				7530F32923E1132900CFE732 /* SceneDelegate.swift in Sources */,
+				7530F34923E11B8C00CFE732 /* CartesianView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
