@@ -28,6 +28,7 @@ class CartesianView: UIView {
             grapher.move(to: CGPoint(x: CGFloat(i) * (carteX / 4), y: 0))
             grapher.addLine(to: CGPoint(x: CGFloat(i) * (carteX / 4), y: bounds.height))
         }
+        
         grapher.lineWidth = 2
         UIColor.gray.setStroke()
         grapher.stroke()
@@ -52,18 +53,36 @@ class CartesianView: UIView {
         UIColor.black.setStroke()
         pointer.stroke()
         
-        var points: [CGPoint] = []
+        curve(myFunc: {x in
+            return sin(x)
+        })
+
+        curve(myFunc: {x in
+            return cos(x)
+        })
         
-        for i in -400...400 {
-            points.append(CGPoint(x: i, y: i * i))
-        }
+        curve(myFunc: {x in
+            if 30 * 30 >= x * x {
+                return sqrt(30 * 30 - x * x)
+            }
+            return 100000
+        })
         
-        drawPoints(places: points)
+        curve(myFunc: {x in
+            if 30 * 30 >= x * x {
+                return -sqrt(30 * 30 - x * x)
+            }
+            return 1000000
+        })
+
     }
 
     func drawPoint(place: CGPoint) {
         let point = UIBezierPath(arcCenter: C(CGPoint(x: place.x, y: place.y)), radius: 3, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
-        
+        let r1 = arc4random() % 100
+        let r2 = arc4random() % 100
+        let r3 = arc4random() % 100
+        UIColor(red: CGFloat(r1) / 100, green: CGFloat(r2) / 100, blue: CGFloat(r3) / 100, alpha: 1).setFill()
         point.fill()
     }
     
@@ -73,30 +92,16 @@ class CartesianView: UIView {
         }
     }
 
-    // plot(p) => plot(C(p))
     func C(_ p: CGPoint) -> CGPoint {
-        let cgpoint = CGPoint(x: carteX + p.x, y: carteY - p.y)
+        let cgpoint = CGPoint(x: carteX + p.x * 10, y: carteY - p.y * 10)
         return cgpoint
     }
+    
+    func curve(myFunc: (CGFloat) -> CGFloat ) {
+        var points: [CGPoint] = []
+        for i in -5000...5000 {
+            points.append(CGPoint(x: CGFloat(i), y: myFunc(CGFloat(i))))
+        }
+        drawPoints(places: points)
+    }
 }
-
-/*
- 
- today  |
-       \|/
-    2020/02/02
-     ________
- ->\|20200202|/<-
- 
- iOS => Math
- (0, 0) => (-400, -450)
- (x, y) => (x + p, y + q)
- 
- (x, y) => (x, -y)
- (-400, -450) => (-400, 450)
- 
- iOS <= Math
- (x - p, y - q) <= (x, y)
- (x, -y) <= (x, y)
- 
- */
