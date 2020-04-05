@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B8551D6243A07B9009F47E3 /* CartesianView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8551D5243A07B9009F47E3 /* CartesianView.swift */; };
 		7530F32723E1132900CFE732 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7530F32623E1132900CFE732 /* AppDelegate.swift */; };
 		7530F32923E1132900CFE732 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7530F32823E1132900CFE732 /* SceneDelegate.swift */; };
 		7530F32B23E1132900CFE732 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7530F32A23E1132900CFE732 /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B8551D5243A07B9009F47E3 /* CartesianView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartesianView.swift; sourceTree = "<group>"; };
 		7530F32323E1132900CFE732 /* Cartesian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cartesian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7530F32623E1132900CFE732 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7530F32823E1132900CFE732 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			children = (
 				7530F32623E1132900CFE732 /* AppDelegate.swift */,
 				7530F32823E1132900CFE732 /* SceneDelegate.swift */,
+				5B8551D5243A07B9009F47E3 /* CartesianView.swift */,
 				7530F32A23E1132900CFE732 /* ViewController.swift */,
 				7530F32C23E1132900CFE732 /* Main.storyboard */,
 				7530F32F23E1132E00CFE732 /* Assets.xcassets */,
@@ -203,6 +206,7 @@
 				7530F32B23E1132900CFE732 /* ViewController.swift in Sources */,
 				7530F32723E1132900CFE732 /* AppDelegate.swift in Sources */,
 				7530F32923E1132900CFE732 /* SceneDelegate.swift in Sources */,
+				5B8551D6243A07B9009F47E3 /* CartesianView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
