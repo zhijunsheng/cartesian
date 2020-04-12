@@ -13,11 +13,11 @@ class CartesianView: UIView {
     override func draw(_ rect: CGRect) {
         drawAxis()
         drawGrid()
-        drawPoint(x: 0, y: 0)
+        drawPoint(x: -3, y: 0)
     }
     
     func drawPoint(x: CGFloat, y: CGFloat) {
-        let point = UIBezierPath(arcCenter: CGPoint(x: x + bounds.width * 0.5, y: y + bounds.height * 0.5), radius: 5, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        let point = UIBezierPath(arcCenter: CGPoint(x: x + bounds.width * 0.5, y: bounds.height * 0.5 - y), radius: 5, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         point.fill()
         point.stroke()
     }
