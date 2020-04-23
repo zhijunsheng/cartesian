@@ -12,25 +12,19 @@ class CartesianView: UIView {
     
     var carteX: CGFloat = 0
     var carteY: CGFloat = 0
+    var side: CGFloat = 0
     
     override func draw(_ rect: CGRect) {
         carteX = bounds.width / 2
         carteY = bounds.height / 2
+        side = carteY / 10
         let grapher = UIBezierPath()
         let crosser = UIBezierPath()
         let pointer = UIBezierPath()
-        for i in 1...7 {
-            grapher.move(to: CGPoint(x: 0, y: CGFloat(i) * (carteY / 4)))
-            grapher.addLine(to: CGPoint(x: bounds.width, y: CGFloat(i) * (carteY / 4)))
-        }
-        
-        for i in 1...7 {
-            grapher.move(to: CGPoint(x: CGFloat(i) * (carteX / 4), y: 0))
-            grapher.addLine(to: CGPoint(x: CGFloat(i) * (carteX / 4), y: bounds.height))
-        }
-        
+        grid(amount: 20)
         grapher.lineWidth = 2
         UIColor.gray.setStroke()
+        
         grapher.stroke()
         
         crosser.move(to: CGPoint(x: carteX, y: 0))
@@ -53,32 +47,40 @@ class CartesianView: UIView {
         UIColor.black.setStroke()
         pointer.stroke()
         
-        curve(myFunc: {x in
-            return sin(x)
-        })
+        /*
+         
+         3x + 5y = 1
+         2x - 7y = 1
+         
+         21x + 35y = 7
+         10x - 35y = 5
+         
+         31x = 12
+         x = 12/31
+         36/31 + 5y = 1
+         5y = 1 - 36/31
+         5y = -5/31
+         y = -1/31
+         */
 
-        curve(myFunc: {x in
-            return cos(x)
-        })
-        
-        curve(myFunc: {x in
-            if 30 * 30 >= x * x {
-                return sqrt(30 * 30 - x * x)
-            }
-            return 100000
-        })
-        
-        curve(myFunc: {x in
-            if 30 * 30 >= x * x {
-                return -sqrt(30 * 30 - x * x)
-            }
-            return 1000000
-        })
+        for i in -1000...1000 {
+            let x: CGFloat = (CGFloat(i) / 10) * bounds.width / 7500
+            let y: CGFloat = ((1 - 3 * x) / 5) * bounds.height / 750
+            drawPointAt(x: x, y: y)
+        }
 
+        for i in -1000...1000 {
+            let x: CGFloat = (CGFloat(i) / 10) * bounds.width / 7500
+            let y: CGFloat = -((1 - 2 * x) / 7) * bounds.height / 750
+            drawPointAt(x: x, y: y)
+        }
+
+//        drawPointAt(x: 3, y: 1)
+//        drawPointAt(x: 0, y: 0)
     }
-
-    func drawPoint(place: CGPoint) {
-        let point = UIBezierPath(arcCenter: C(CGPoint(x: place.x, y: place.y)), radius: 3, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        
+    func drawPointAt(x: CGFloat, y: CGFloat) {
+        let point = UIBezierPath(arcCenter: CGPoint(x: carteX + side * x, y: carteY - side * y), radius: 2, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         let r1 = arc4random() % 100
         let r2 = arc4random() % 100
         let r3 = arc4random() % 100
@@ -88,13 +90,8 @@ class CartesianView: UIView {
     
     func drawPoints(places: [CGPoint]) {
         for place in places {
-            drawPoint(place: place)
+            drawPointAt(x: place.x, y: place.y)
         }
-    }
-
-    func C(_ p: CGPoint) -> CGPoint {
-        let cgpoint = CGPoint(x: carteX + p.x * 10, y: carteY - p.y * 10)
-        return cgpoint
     }
     
     func curve(myFunc: (CGFloat) -> CGFloat ) {
@@ -103,5 +100,15 @@ class CartesianView: UIView {
             points.append(CGPoint(x: CGFloat(i), y: myFunc(CGFloat(i))))
         }
         drawPoints(places: points)
+    }
+    func grid(amount: Int) {
+        let grapher = UIBezierPath()
+        for i in 1..<amount {
+            grapher.move(to: CGPoint(x: 0, y: CGFloat(i) * side))
+            grapher.addLine(to: CGPoint(x: bounds.width, y: CGFloat(i) * side))
+            grapher.move(to: CGPoint(x: CGFloat(i) * side, y: 0))
+            grapher.addLine(to: CGPoint(x: CGFloat(i) * side, y: bounds.height))
+        }
+        grapher.stroke()
     }
 }
